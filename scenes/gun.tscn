@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cdi2senmqmkao"]
+
+[ext_resource type="Script" uid="uid://dxk3dnl4x34ng" path="res://scenes/gun.gd" id="1_x77fm"]
+[ext_resource type="AudioStream" uid="uid://cr36jxkwmfr1n" path="res://audio/blaster.ogg" id="2_og67c"]
+
+[node name="Gun" type="Node3D" unique_id=249795491]
+script = ExtResource("1_x77fm")
+
+[node name="GunMesh" type="Node3D" parent="." unique_id=1559240739]
+
+[node name="NozzleBurst" type="Node3D" parent="." unique_id=796013521]
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="." unique_id=235664449]
+stream = ExtResource("2_og67c")

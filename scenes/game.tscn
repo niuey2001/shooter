@@ -1,0 +1,80 @@
+[gd_scene format=3 uid="uid://i54pgr4gkptk"]
+
+[ext_resource type="PackedScene" uid="uid://cveo8kcpwth1d" path="res://scenes/player.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://c16n6ltdq3noc" path="res://scenes/enemy.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://bop5c32ueja05" path="res://scenes/ui.tscn" id="3_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://ca2uvseo02gf6" path="res://scenes/platform_large.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://buvotalp0dbyc" path="res://models/grass.glb" id="5_iywne"]
+[ext_resource type="PackedScene" uid="uid://c2qb1jg8svxs5" path="res://models/cloud.glb" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://c3jhlck56hnr1" path="res://scenes/platform_falling_2.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://bio68chixk616" path="res://models/wall-high.glb" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://bpqvcjl1iikl0" path="res://models/wall-low.glb" id="9_0tnpc"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_8cj0n"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_uwrxv"]
+sky_material = SubResource("ProceduralSkyMaterial_8cj0n")
+
+[sub_resource type="Environment" id="Environment_yqjtg"]
+background_mode = 1
+background_color = Color(0.49019608, 0.5803922, 0.8745098, 1)
+sky = SubResource("Sky_uwrxv")
+ambient_light_source = 2
+ambient_light_color = Color(0.5411765, 0.5411765, 0.5411765, 1)
+glow_enabled = true
+
+[node name="Game" type="Node3D" unique_id=138546414]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="." unique_id=1121320314]
+environment = SubResource("Environment_yqjtg")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=430419100]
+transform = Transform3D(-0.8660254, -0.43301278, 0.25, 0, 0.49999997, 0.86602545, -0.50000006, 0.75, -0.43301266, 0, 0, 0)
+shadow_enabled = true
+
+[node name="Characters" type="Node3D" parent="." unique_id=1449430057]
+
+[node name="Player" parent="Characters" unique_id=726423086 instance=ExtResource("1_uwrxv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.23185444, 0.2757826, 0.21338177)
+
+[node name="Enemy" parent="Characters" unique_id=1429324664 instance=ExtResource("2_yqjtg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.8641696, -12.061266)
+
+[node name="Enemy2" parent="Characters" unique_id=1907478875 instance=ExtResource("2_yqjtg")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.007278, 0, -15.49951)
+
+[node name="UI" parent="." unique_id=574417519 instance=ExtResource("3_lnu2h")]
+
+[node name="Terrian" type="Node3D" parent="." unique_id=510443501]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.98323935, 0)
+
+[node name="PlatformLarge" parent="Terrian" unique_id=120676914 instance=ExtResource("4_lbhrr")]
+
+[node name="PlatformLarge2" parent="Terrian" unique_id=64006876 instance=ExtResource("4_lbhrr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.950461, -0.30958134, -4.9524875)
+
+[node name="PlatformLarge3" parent="Terrian" unique_id=2041865377 instance=ExtResource("4_lbhrr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.502201, -0.30958086, 2.9734993)
+
+[node name="grass3" parent="Terrian" unique_id=1900716842 instance=ExtResource("5_iywne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.0012913, 0.19041866, 1.794255)
+
+[node name="grass2" parent="Terrian" unique_id=1439130341 instance=ExtResource("5_iywne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.01055, 0.19041842, -1.8528066)
+
+[node name="grass4" parent="Terrian" unique_id=97626038 instance=ExtResource("5_iywne")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.4637413, 0.19041866, 1.800056)
+
+[node name="cube2" parent="Terrian" unique_id=5090946 instance=ExtResource("6_p57ef")]
+transform = Transform3D(1, 0, 0, 0, 0.8188886, -0.57395244, 0, 0.57395244, 0.8188886, 5.940613, -0.06063658, -8.027287)
+
+[node name="platform-falling2" parent="Terrian" unique_id=655191685 instance=ExtResource("7_u5sy4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.0070848, 0, 4.997326)
+
+[node name="wall-high2" parent="Terrian" unique_id=978597570 instance=ExtResource("8_gee14")]
+transform = Transform3D(0.11869369, 0, -0.9929309, 0, 1, 0, 0.9929309, 0, 0.11869369, 3.5788555, 0.98323935, -4.9902864)
+
+[node name="wall-low2" parent="Terrian" unique_id=507537383 instance=ExtResource("9_0tnpc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.6766086, 0.98323935, -2.6442924)

@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://cveo8kcpwth1d"]
+
+[ext_resource type="Script" uid="uid://cbpwl1c5mm36w" path="res://scenes/player.gd" id="1_3vyb7"]
+[ext_resource type="Texture2D" uid="uid://hqiur7k6pawe" path="res://sprites/crosshair.png" id="2_g2els"]
+[ext_resource type="PackedScene" uid="uid://drbfi8bdr7gba" path="res://scenes/blaster.tscn" id="3_qhqgy"]
+[ext_resource type="PackedScene" uid="uid://dyjdxuuuke7af" path="res://scenes/dual_shooter.tscn" id="4_dqkch"]
+[ext_resource type="Texture2D" uid="uid://b7pbo2461l5me" path="res://sprites/shadow.webp" id="5_qlg0r"]
+[ext_resource type="AudioStream" uid="uid://qysp8nqy5w5k" path="res://audio/jump_a.ogg" id="6_tuyoq"]
+[ext_resource type="AudioStream" uid="uid://bkhqbuq22wfy8" path="res://audio/weapon_change.ogg" id="7_fjrip"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_2oxwf"]
+
+[node name="Player" type="CharacterBody3D" unique_id=726423086]
+collision_layer = 2
+collision_mask = 5
+script = ExtResource("1_3vyb7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=1647410699]
+shape = SubResource("CapsuleShape3D_2oxwf")
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=100108933]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D" unique_id=1782821304]
+target_position = Vector3(0, 0, -20)
+collision_mask = 5
+
+[node name="Crosshair" type="Sprite3D" parent="Camera3D" unique_id=2120972731]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, -4.15687)
+texture = ExtResource("2_g2els")
+
+[node name="Guns" type="Node3D" parent="Camera3D" unique_id=1799286598]
+
+[node name="Blaster" parent="Camera3D/Guns" unique_id=249795491 instance=ExtResource("3_qhqgy")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -1)
+max_size = Vector3(0.7, 0.7, 0.7)
+
+[node name="DualShooter" parent="Camera3D/Guns" unique_id=725932429 instance=ExtResource("4_dqkch")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, -1, -1)
+
+[node name="Decal" type="Decal" parent="." unique_id=1122098681]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9993724, 0)
+texture_albedo = ExtResource("5_qlg0r")
+
+[node name="Sounds" type="Node3D" parent="." unique_id=984112798]
+
+[node name="JumpSound" type="AudioStreamPlayer3D" parent="Sounds" unique_id=2119624827]
+stream = ExtResource("6_tuyoq")
+
+[node name="SwitchSound" type="AudioStreamPlayer3D" parent="Sounds" unique_id=1398278807]
+stream = ExtResource("7_fjrip")
